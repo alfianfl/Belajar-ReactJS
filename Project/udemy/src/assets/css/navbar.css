@@ -1,0 +1,34 @@
+.nav {
+  background-color: red;
+}
+.udlite-btn .btn-daftar {
+  min-width: 6rem;
+  background-color: #0f7c90;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid #0f7c90;
+}
+.btn-login {
+  min-width: 6rem;
+  background-color: #fff;
+  font-size: 15px;
+  border: 1px solid #0f7c90;
+  color: #0f7c90;
+}
+.btn-daftar:hover {
+  background-color: #046677;
+}
+ul li {
+  font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto, segoe ui,
+    Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+    segoe ui symbol;
+}
+.nav-hover:hover {
+  color: red;
+}
+.nav-link:hover {
+  color: red;
+}
+/* .input-search input {
+  font-size: 1.4rem;
+} */

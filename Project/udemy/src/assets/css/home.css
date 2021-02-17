@@ -1,0 +1,152 @@
+.link-progress {
+  color: #8ed1dc;
+}
+.button-detail-kelas .btn {
+  color: #fff;
+  border: 1px solid #fff;
+}
+.detail-kelas > p {
+  font-size: 19px;
+}
+.thumbnail {
+  background-color: #1f1e1e;
+  height: 360px;
+}
+.ulasan p a {
+  color: #8ed1dc;
+}
+.fa-star {
+  color: rgb(255, 196, 140);
+}
+.best-seller {
+  background-color: rgb(255, 231, 153);
+  padding: 4px;
+  border-radius: 5px;
+  color: rgb(89, 61, 0);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02rem;
+  font-size: 12px;
+  cursor: pointer;
+}
+.ulasan > span {
+  font-size: 13px;
+}
+.what-will-you-learn {
+  background-color: #fbfbf8;
+  border: 1px solid #dcdacb;
+  border-radius: 4px;
+  padding: 2.4rem 0;
+  width: 100%;
+}
+
+.container-fluid {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+#image {
+  line-height: 1.5em;
+  list-style-type: none;
+}
+.check-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.check-list li {
+  position: relative;
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+}
+
+.check-list li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 5px;
+  height: 11px;
+  border-width: 0 2px 2px 0;
+  border-style: solid;
+  border-color: #73726c;
+  transform-origin: bottom left;
+  transform: rotate(45deg);
+}
+.btn-checkout .btn {
+  width: 100%;
+}
+.btn-checkout .btn-keranjang {
+  border: 1px solid #ec5252;
+  color: white;
+}
+.btn-beli {
+  background-color: transparent;
+  border: 1px solid #2896a9;
+  color: #0f7c90;
+}
+.cakupan-kursus span {
+  display: block;
+  font-size: 14px;
+  color: #3c3b37;
+}
+.card-content > p {
+  text-align: center;
+  color: #0f7c90;
+}
+.card-content > strong {
+  font-size: 30px;
+}
+.btn-checkout {
+  font-size: 12px;
+  text-align: center;
+}
+.card-checkout {
+  width: 350px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* .list-video {
+  background-color: #fbfbf8;
+  border: 1px solid #dcdacb;
+  border-radius: 4px;
+  padding: 2.4rem 0;
+  width: 100%;
+} */
+.thumb-video {
+  border: 1px solid #dcdacb;
+  background-color: #fbfbf8;
+  padding: 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.detail-video {
+  border: 1px solid #dcdacb;
+  padding: 15px;
+}
+.detail-video .detail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.detail-pengerjaan {
+  font-size: 14px;
+}
+.display-none {
+  display: none;
+}
+.detail a {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .thumbnail {
+    height: inherit;
+  }
+  .card {
+    display: none;
+  }
+}
