@@ -4,6 +4,9 @@ import imageReact from '../assets/img/logoReact.png';
 import WhatYouLearn from '../component/WhatYouLearn';
 import youtubeApi from '../API/youtubeApi';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Deskripsi from '../component/Deskripsi'
+import NavKelas from '../component/NavKelas'
+import ListVideo from '../component/ListVedeo'
 
 
 class Home extends Component {
@@ -15,7 +18,11 @@ class Home extends Component {
       selectedVideoId: null,
       videoChannel:'',
       videoTitle:'',
-      modal:false
+      recomList:[{},{},{},{}],
+      videoImage:null,
+      modal:false,
+      isTruncated:true,
+      showmore:'Tampilkan lebih banyak'
     };
   }
   dropdownActive = (index) =>{
@@ -35,24 +42,45 @@ class Home extends Component {
   componentDidMount(){
     youtubeApi.get('/search',{
       params: {
-        q: 'aww animals'
+        q: 'india'
       }
     })
     .then(response => {
       this.setState({
         thumbVideo: response.data.items,
-        selectedVideoId: response.data.items[0].id.videoId,
-        videoTitle:response.data.items[0].snippet.title,
-        videoChannel:response.data.items[0].snippet.channel
+        videoImage:response.data.items[0].snippet.thumbnails.default.url
       })
     })
+    .catch(err => {
+      console.log(err)
+    })
   }
-  toggle = () => {
-    this.setState({modal:!this.state.modal})
+
+  // videoSelected
+  toggle = (Id,title) => {
+    this.setState({
+      modal:!this.state.modal,
+      selectedVideoId:Id,
+      videoTitle:title
+    })
   }
+
+  // toggle
+  toggleTruncated = () =>{
+    this.setState({
+      isTruncated:!this.state.isTruncated
+    })
+    if(this.state.showmore=='Tampilkan lebih banyak'){
+        this.setState({showmore:'Tampilkan lebih sedikit'})
+    }else{
+      this.setState({showmore:'Tampilkan lebih banyak'})
+    }
+}
   render() {
+    const resultTruncated = this.state.isTruncated ? this.state.thumbVideo.slice(0,9) : this.state.thumbVideo;
     return (
-      <>
+      <div>
+        <NavKelas/>
         <div className="row">
           <div className=" col-lg-12">
             <div className="thumbnail pb-5 pt-5 pl-5" >
@@ -127,73 +155,90 @@ class Home extends Component {
                     <span>13 bagian • 149 pelajaran • 18j 3m total durasi</span>
                     <strong><a href="#" style={{color:"#0f7c90"}}>Perluas semua bagian</a></strong>
                   </div>
-
                   <div className="list-video ">
-                    {
-                      this.state.thumbVideo.map((thumb,index) => (
-                        <div  onClick={ () => this.dropdownActive(index)} >
-                          <div className="thumb-video d-flex justify-content-between">
-                            <div>
-                              <span><i class="fas fa-caret-down mr-3"></i></span>
-                              <strong>{thumb.snippet.title}</strong>
-                            </div>
-                            <div className="time">
-                              <span>5 pelajaran • 18j 3m</span>
-                            </div>
-                          </div>
-                          <div className={this.dropdownActiveStyle(index)}>
-                            <div className="detail">
-                              <div>
-                                <span><i class="fab fa-youtube mr-3"></i></span>
-                                <a onClick={this.toggle}>Introduction</a>
-                              </div>
-                              <div className="durasi">
-                                <span>03:48</span>
-                              </div>
-                            </div>
-                            <div className="detail">
-                              <div>
-                                <span><i class="fab fa-youtube mr-3"></i></span>
-                                <a>Introduction</a>
-                              </div>
-                              <div className="durasi">
-                                <span>03:48</span>
-                              </div>
-                            </div>
-                            <div className="detail">
-                              <div>
-                                <span><i class="fab fa-youtube mr-3"></i></span>
-                                <a>Introduction</a>
-                              </div>
-                              <div className="durasi">
-                                <span>03:48</span>
-                              </div>
-                            </div>
-                          </div>                                         
-                        </div>
-                      ))
-                    }
+                    <ListVideo
+                      thumbVideo={resultTruncated}
+                      dropdownActiveStyle={(index) => this.dropdownActiveStyle(index)}
+                      dropdownActive={(index) => this.dropdownActive(index)}
+                      toggle={(videoId,title) => this.toggle(videoId,title)}
+                    />
+                  <div>
+                    <button className="btn btn-login w-100 mt-3" onClick={this.toggleTruncated}> <strong>{this.state.showmore}</strong> </button>
+                  </div>   
                   </div>
                 </div>
               </div>
-            </div>        
+            </div> 
+            <div className="row mt-4">
+              <div className="col-lg-7">
+                <h4><strong>Persyaratan</strong></h4>
+                <ul className="dot-list mt-3">
+                    <li>Dasar - dasar HTML dan CSS</li>
+                    <li>Dasar - dasar pemprograman seperti varibale, if statement, looping, dan function</li>
+                    <li>Terbiasa menggunakan code editor seperti Visual Studio, Sublime, Atom , atau editor lainnya</li>
+                </ul>
+                <div className="deskripsi mt-4">
+                  <Deskripsi/>     
+                </div>     
+              </div>
+            </div>
+            <div className="row mt-4 rekomendasi-container">
+              <div className="col-lg-8 ">
+                <h4><strong>Peserta juga membeli</strong></h4>
+                {
+                  this.state.recomList.map(recom => (
+                    <div className="rekomendasi">
+                      <div className="row detail-rekomendasi">
+                        <div className="col-lg-12 d-flex justify-content-between">
+                          <div className="d-flex justify-content-between">
+                            <img className="mr-2" src={this.state.videoImage}/>
+                            <div>
+                              <h6><strong>Pemrogaman Kotlin: Pemula sampai mahir</strong></h6>
+                              <span className="best-seller mr-2"><strong>Terlaris </strong> </span>
+                              <span className="total-jam"><strong>18 total jam </strong> </span>
+                              <span> Diperbarui 1/2021 </span>
+                            </div>
+                          </div>
+                          <div className=" rating d-flex justify-content-between">
+                            <span style={{color:" #be5a0e"}}><strong>4.9</strong><i class=" ml-1 fas fa-star"></i></span>
+                            <span><i class="far fa-user mr-1"></i>52</span>
+                            <span> <strong>Rp. 179.000</strong></span>
+                            <span style={{color:"#0f7c90",fontSize:"25px"}}><i class="far fa-heart"></i></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="line" style={{marginTop:"15px"}}></div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+            <div className="row">
+              
+            </div>       
           </div>
           <div>
-          <Modal isOpen={this.state.modal} toggle={this.toggle} >
-            <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-            <ModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-              <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-            </ModalFooter>
-          </Modal>
-    </div>
+            <Modal isOpen={this.state.modal} toggle={this.toggle} >
+              <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+              <ModalBody>
+                <div className=" video-player">
+                  <iframe
+                    title=""
+                    className="video-iframe"
+                    src={`https://www.youtube.com/embed/${this.state.selectedVideoId}`}
+                  />
+                  <h5>{this.state.videoTitle}</h5>
+                  <p></p>
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggle}>Clsoe</Button>
+              </ModalFooter>
+            </Modal>
+          </div>
         </div>
-      </>
+      </div>
     );
   }
 }
-
 export default Home;

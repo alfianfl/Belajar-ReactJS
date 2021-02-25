@@ -15,10 +15,10 @@ class App extends Component {
       videoChannel:''
     };
   }
-onVideoSelected = (videoId, videoTitle) => {
+onVideoSelected = (Id, title) => {
   this.setState({
-    selectedVideoId:videoId,
-    videoTitle:videoTitle
+    selectedVideoId:Id,
+    videoTitle:title
   })
 }
 onSearch = async keyword =>{
@@ -41,9 +41,9 @@ onSearch = async keyword =>{
   render() {
     return (
       <div className="App">
-            <Search onSearch={this.onSearch}/>
+            <Search onSearch={(keyword) => this.onSearch(keyword)}/>
             <VideoList
-                onVideoSelected={this.onVideoSelected}
+                onVideoSelected={(Id,title) => this.onVideoSelected(Id,title)}
                 data={this.state.videosMetaInfo}
             />
             <Videoplayer 
