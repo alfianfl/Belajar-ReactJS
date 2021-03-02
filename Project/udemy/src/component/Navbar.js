@@ -19,7 +19,7 @@ function Navbar() {
                         </li>
                         <li className="nav-item mr-3">
                             <form className="form-inline my-2 my-lg-0">
-                                <div className="input-group input-search input-group-lg" style={{width:"550px"}}>
+                                <div className="input-group input-search input-group-lg" >
                                     {/* <i class="fas fa-search"></i> */}
                                     <input type="text" placeholder="cari apa saja" className="form-control " style={{borderRadius:"50px",fontSize:"14px"}} aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
                                 </div>
