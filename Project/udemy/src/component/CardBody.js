@@ -5,7 +5,7 @@ function CardBody() {
     const [cardImg, setCardImg] = useState(false)
 
     const cardOnscroll = () =>{
-        console.log(window.scrollY)
+    
       if(window.scrollY >= 440 && window.scrollY <= 3000  ){
         setCardImg(true)
       }
@@ -17,7 +17,7 @@ function CardBody() {
     window.addEventListener('scroll', cardOnscroll)
     if(cardImg){
         return (
-            <div className={cardImg ? 'card card-checkout animation':'card card-checkout active'} style={{marginLeft:"60px",position:"fixed",bottom:"90px",zIndex:"999"}}>
+            <div className={cardImg ? 'card card-checkout animation':'card card-checkout active'} style={{position:"fixed",bottom:"90px",zIndex:"999"}}>
                 <div>
                     <div className="card-body">
                                 <div className="d-flex justify-content-around">
@@ -47,7 +47,7 @@ function CardBody() {
         )
     }else{
         return(
-            <div className={cardImg ? 'card card-checkout active':'card card-checkout'} style={{marginLeft:"60px"}}>
+            <div className={cardImg ? 'card card-checkout active':'card card-checkout'} >
             <img src={imageReact} className='card-img-top' alt="..." />
             <div>
                 <div className="card-body">

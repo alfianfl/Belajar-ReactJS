@@ -8,7 +8,7 @@ function Footer() {
                 <div className="col-lg-12">
                     <div className="nav-footer">
                         <div className="row ">
-                            <div className="col-lg-12 d-flex justify-content-between">
+                            <div className="col-lg-12 ">
                                 <div className=" list-footer-nav ml-2 " >
                                     <ul>
                                         <li>Udemy for Business</li>
@@ -30,7 +30,7 @@ function Footer() {
                                         <li>Kursus unggulan</li>        
                                     </ul>
                                 </div>
-                                <div>
+                                <div className="btnBahasa">
                                     <div className="btn-group dropup mr-3" >
                                         <button type="button" className="btn btn-bahasa dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <strong><i class="fas fa-globe mr-2"></i><span>Bahasa Indonesia</span></strong>

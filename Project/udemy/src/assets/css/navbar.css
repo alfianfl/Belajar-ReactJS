@@ -23,9 +23,7 @@ ul li {
     Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
     segoe ui symbol;
 }
-/* .pos-f-t {
-  display: none;
-} */
+
 .nav-hover:hover {
   color: red;
 }
@@ -35,6 +33,8 @@ ul li {
 .form-inline .input-group {
   width: 550px;
 }
+/* navMobile */
+
 @media only screen and (max-width: 1225px) {
   .navbar-nav li:nth-child(4) {
     display: none;
@@ -43,7 +43,8 @@ ul li {
     width: 350px;
   }
 }
-
-/* .input-search input {
-  font-size: 1.4rem;
-} */
+@media only screen and (max-width: 768px) {
+  .navbar-desktop {
+    display: none;
+  }
+}

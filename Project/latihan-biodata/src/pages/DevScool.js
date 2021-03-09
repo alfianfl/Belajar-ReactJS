@@ -48,7 +48,7 @@ const DevSchool = () => (
         </div>
 
         <div className="row mt-5" style={{ marginBottom: 50}}>
-        <Link className="nav-item nav-link text-secondary" to="/ReactAxios">
+        <Link className="nav-item nav-link text-secondary d-flex" to="/ReactAxios">
                 {
                     cards.map(card => 
                         <Card 

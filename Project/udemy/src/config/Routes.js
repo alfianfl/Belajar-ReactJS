@@ -5,7 +5,9 @@ import Checkout from '../pages/Checkout'
 import Teaching from '../pages/Teaching'
 import Navbar from '../component/Navbar'
 
+
 function Routes() {
+
     return (
         <div>
             <Router>

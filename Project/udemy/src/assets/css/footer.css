@@ -4,6 +4,10 @@
   font-size: 14px;
   margin-bottom: 5px;
 }
+.nav-footer .col-lg-12 {
+  display: flex;
+  justify-content: space-between;
+}
 .list-footer-nav {
   display: flex;
 }
@@ -26,5 +30,16 @@
 @media only screen and (max-width: 600px) {
   .list-footer-nav {
     display: inline;
+  }
+  .nav-footer .col-lg-12 {
+    flex-direction: column;
+  }
+  .list-footer-nav {
+    order: 2;
+  }
+  .btnBahasa {
+    order: 1;
+    margin-left: 47px;
+    margin-bottom: 20px;
   }
 }

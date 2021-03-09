@@ -4,17 +4,15 @@ import CardBody from '../component/CardBody'
 function ThumbnailHome() {
     return (
         <div>
-            <div className="thumbnail pb-5 pt-5 pl-5" >
-              <div className="row">
-                <div className="col-lg-7">
-                  <div className="link-progress">
-                    <span> <strong>Pengembangan</strong></span>
-                    <span style={{color:"white"}}> > </span>
-                    <span> <strong>Pengembangan Web</strong> </span>
-                    <span style={{color:"white"}}> > </span>
-                    <span> <strong>React</strong> </span>
-                  </div>
-                  <div className="detail-kelas" style={{color:'white',width:"100%"}}>
+            <div className="thumbnail d-flex   pb-4 pt-4" >
+                  <div className="detail-kelas " style={{color:'white'}}>
+                    <div className="link-progress">
+                      <span> <strong>Pengembangan</strong></span>
+                      <span style={{color:"white"}}> > </span>
+                      <span> <strong>Pengembangan Web</strong> </span>
+                      <span style={{color:"white"}}> > </span>
+                      <span> <strong>React</strong> </span>
+                    </div>
                     <h2 >React Masterclass Untuk Semua</h2>
                     <p>Belajar React dari dasar sampai advanced topik seperti context-api, redux, redux-<br/>saga, Ant design, styled-component, dll</p>
                     <div className="ulasan">
@@ -34,12 +32,12 @@ function ThumbnailHome() {
                       <button className="btn"><strong>Hadian kursus ini</strong></button>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-5">
-                  <CardBody/>
-                </div>
-              </div>
-            </div>  
+                  <div className="grid-card">
+                    <div>
+                      <CardBody/>
+                    </div>
+                  </div>
+                </div>    
         </div>
     )
 }
